@@ -19,6 +19,7 @@ module.exports.saveProduct = function(model,data){
 };
 
 const createAndSavePerson = () => {
+  console.log( mariano );
   router.post('/insert',(req,res)=>{
   mariano.saveProduct(data,(err)=>{
         if(err) console.log(err)
