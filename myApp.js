@@ -11,27 +11,27 @@ let Person;
 const personSchema = new mongoose.Schema({
   name: { type: String, required: true },
   age: Number, favoriteFoods: [String] });
-  Person = mongoose.model( "Person", personSchema);
-    const createAndSavePerson= () => {
-  let mariano = new Person({ name: "Mariano", age: 36, favoriteFoods:[ "asado", "pizza"] });
-  saveModel(  mariano );
+
+Person = mongoose.model( "Person", personSchema);
+let mariano = new Person({ name: "Mariano", age: 36, favoriteFoods:[ "asado", "pizza"] });
+
+const createAndSavePerson= ( mariano, done ) => {
+  mariano
+  .save()
+  .then((doc) => {
+    console.log("exito");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+  done(null);
 };
 
-async function saveModel( modelSav ) {
 // mongoose.set('transactionAsyncLocalStorage', true);
 //  await mongoose.connection.transaction(async() => {
 //  await modelSav.save();
 //  throw new Error('Oops');
 //  }).catch(() => {});
-modelSav
-  .save()
-  .then((doc) => {
-    console.log(doc);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-}; 
 
   /*let output;
     (async () => {
