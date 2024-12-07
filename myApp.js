@@ -18,11 +18,19 @@ const personSchema = new mongoose.Schema({
 };
 
 async function saveModel( modelSav ) {
-  mongoose.set('transactionAsyncLocalStorage', true);
-  await mongoose.connection.transaction(async() => {
-  await modelSav.save();
-  throw new Error('Oops');
-  }).catch(() => {});
+// mongoose.set('transactionAsyncLocalStorage', true);
+//  await mongoose.connection.transaction(async() => {
+//  await modelSav.save();
+//  throw new Error('Oops');
+//  }).catch(() => {});
+modelSav
+  .save()
+  .then((doc) => {
+    console.log(doc);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 }; 
 
   /*let output;
