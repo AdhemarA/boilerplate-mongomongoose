@@ -16,14 +16,7 @@ const personSchema = new mongoDbConex.Schema({
 
  const createAndSavePerson = () => {
   let mariano = new Person({ name: "Mariano", age: 36, favoriteFoods:[ "asado", "pizza"] });
-  mariano.save(function(err,result){
-    if (err){
-        console.log(err);
-    }
-    else{
-        console.log(result)
-    }
-})
+  mariano.save();
 };
 
 
