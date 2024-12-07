@@ -1,24 +1,29 @@
 require('dotenv').config();
 let express = require('express');
-let mongoDbConex = require('mongoose');
+let router = express.Router();
+let mongoose = require('mongoose');
 
 let mongoDbURI = "mongodb+srv://aahborgesnogueira:dBJZnb3UNbMqcMho@cluster0.6qowl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-mongoDbConex.connect(mongoDbURI, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoDbConex.connection.on('connected', () => console.log('connected'));
+mongoose.connect(mongoDbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connection.on('connected', () => console.log('connected'));
 
 let Person;
-const personSchema = new mongoDbConex.Schema({
+const personSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  age: Number, favoriteFoods: [String]
- });
-
- Person = mongoDbConex.model( "Person", personSchema);
-
- const createAndSavePerson = () => {
+  age: Number, favoriteFoods: [String] });
+  Person = mongoose.model( "Person", personSchema);
+    const createAndSavePerson= () => {
   let mariano = new Person({ name: "Mariano", age: 36, favoriteFoods:[ "asado", "pizza"] });
-  mariano.save();
+  saveModel(  mariano );
 };
 
+async function saveModel( modelSav ) {
+  mongoose.set('transactionAsyncLocalStorage', true);
+  await connection.transaction(async() => {
+    await modelSav.save();
+    throw new Error('Oops');
+  }).catch(() => {});
+}; 
 
   /*let output;
     (async () => {
