@@ -15,7 +15,15 @@ const personSchema = new mongoDbConex.Schema({
  Person = mongoDbConex.model( "Person", personSchema);
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  let mariano = new Person({ name: "Mariano", age: 36, favoriteFoods:[ "asado", "pizza"] });
+  mariano.save( (error, data) => {
+    if(error){
+      console.log(error);
+    }else{
+      done(null, data);
+    }
+  })
+ 
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
