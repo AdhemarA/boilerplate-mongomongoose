@@ -1,8 +1,9 @@
 require('dotenv').config();
+let express = require('express');
 let mongoDbConex = require('mongoose');
 
 let mongoDbURI = "mongodb+srv://aahborgesnogueira:dBJZnb3UNbMqcMho@cluster0.6qowl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-mongoose.connect(mongoDbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoDbConex.connect(mongoDbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let Person;
 
