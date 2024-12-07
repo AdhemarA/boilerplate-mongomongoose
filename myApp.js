@@ -18,7 +18,7 @@ const createAndSavePerson = (done) => {
   let mariano = new Person({ name: "Mariano", age: 36, favoriteFoods:[ "asado", "pizza"] });
   let output;
   async () => {
-     output = await mariano.save();
+     let output = await mariano.save();
   };
      console.log(output);
 };
