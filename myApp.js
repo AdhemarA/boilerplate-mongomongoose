@@ -16,11 +16,16 @@ Person = mongoose.model( "Person", personSchema);
 let mariano = new Person({ name: "Mariano", age: 36, favoriteFoods:[ "asado", "pizza"] });
 
 const createAndSavePerson= ( mariano, done ) => {
-  mariano.save().then((doc) => {
-    console.log("exito");
-  }).catch((err) => {
-    console.error(err);
-  });
+  let result = "";
+  mariano.save(function(err, result){
+    if (err){
+        console.log(err);
+    }
+    else{
+        console.log("exito");
+    }
+})
+
   done(null);
 };
 
