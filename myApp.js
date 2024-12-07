@@ -19,17 +19,19 @@ module.exports.saveProduct = function(model,data){
 };
 
 const createAndSavePerson = () => {
-  console.log( mariano );
   router.post('/insert',(req,res)=>{
-  mariano.saveProduct(data,(err)=>{
-        if(err) console.log(err)
-        res.redirect('/')
+  Person.saveProduct(mariano,(err)=>{
+        if(err){ console.log(err);
+           res.redirect('/');
+        }else{
+          console.log( "exito" );
+        };
     });
-});
+  });
+  
 };
   
 createAndSavePerson();
-
 
 // mongoose.set('transactionAsyncLocalStorage', true);
 //  await mongoose.connection.transaction(async() => {
