@@ -14,8 +14,9 @@ const personSchema = new mongoose.Schema({
 
 Person = mongoose.model( "Person", personSchema);
 let mariano = new Person({ name: "Mariano", age: 36, favoriteFoods:[ "asado", "pizza"] });
+createAndSavePerson();
 
-const createAndSavePerson= ( mariano, done ) => {
+const createAndSavePerson = () => {
   let result = "";
   mariano.save(function(err, result){
     if (err){
@@ -24,9 +25,8 @@ const createAndSavePerson= ( mariano, done ) => {
     else{
         console.log("exito");
     }
-})
-
-  done(null);
+    done(null);
+  });
 };
 
 // mongoose.set('transactionAsyncLocalStorage', true);
