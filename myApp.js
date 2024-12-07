@@ -19,9 +19,9 @@ const personSchema = new mongoose.Schema({
 
 async function saveModel( modelSav ) {
   mongoose.set('transactionAsyncLocalStorage', true);
-  await connection.transaction(async() => {
-    await modelSav.save();
-    throw new Error('Oops');
+  await mongoose.connection.transaction(async() => {
+  await modelSav.save();
+  throw new Error('Oops');
   }).catch(() => {});
 }; 
 
