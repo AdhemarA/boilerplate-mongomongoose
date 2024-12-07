@@ -5,7 +5,12 @@ let mongoDbConex = require('mongoose');
 let mongoDbURI = "mongodb+srv://aahborgesnogueira:dBJZnb3UNbMqcMho@cluster0.6qowl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 mongoDbConex.connect(mongoDbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-let Person;
+const personSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  age: Number, favoriteFoods: [String]
+ });
+
+ let Person = mongoose.model( "Person", personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
