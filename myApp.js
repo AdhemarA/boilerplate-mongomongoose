@@ -26,46 +26,19 @@ var createAndSavePerson = function(done) {
   });
 };  
 
-
-
-/*mariano.ave( function(error, data) {
-  if(error){
-    console.log(error);
-  }else{
-    done(null, data);
-  };s
-});
-
-const createAndSavePerson = (done) => {
-  done(null, data);
-};
-// mongoose.set('transactionAsyncLocalStorage', true);
-//  await mongoose.connection.transaction(async() => {
-//  await modelSav.save();
-//  throw new Error('Oops');
-//  }).catch(() => {});
-
-  /*let output;
-    (async () => {
-       output = await mariano.save();
-    })
-       console.log(output);
-  mariano.save( (error, data) => {
-    if(error){
-      console.log(error);
-    }else{
-      done(null, data);
-    }
-  })*/
- 
  module.exports.saveProduct = function(model,data){
      model.save(data);
   };
   
-
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
-};
+  Person.create(arrayOfPeople, (err, people)=> {
+    if(err){
+      console.log(err);
+    }else{
+      done(null,people);
+    };
+  });
+  };
 
 const findPeopleByName = (personName, done) => {
   done(null /*, data*/);
