@@ -14,22 +14,25 @@ const personSchema = new mongoose.Schema({
   age: Number, favoriteFoods: [String] });
 
 Person = mongoose.model( "Person", personSchema);
-let mariano = new Person({ name: "Mariano", age: 36, favoriteFoods:[ "asado", "pizza"] });
 
 var createAndSavePerson = function(done) {
   var mariano = new Person({name: "Mariano", age: 36, favoriteFoods:[ "asado", "pizza"]});
-
   mariano.save(function(err, data) {
-    if (err) return console.error(err);
-    done(null, data)
-  });
-};
-/*mariano.save( function(error, data) {
+    if (err){
+      console.error(err);
+    }else{
+      done(null, data);
+    };
+});
+
+
+
+/*mariano.ave( function(error, data) {
   if(error){
     console.log(error);
   }else{
     done(null, data);
-  };
+  };s
 });
 
 const createAndSavePerson = (done) => {
