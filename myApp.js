@@ -16,25 +16,17 @@ const personSchema = new mongoose.Schema({
 Person = mongoose.model( "Person", personSchema);
 let mariano = new Person({ name: "Mariano", age: 36, favoriteFoods:[ "asado", "pizza"] });
 
-module.exports.saveProduct = function(model,data){
-    model.save(data)
-};
+mariano.save( function(error, data) {
+  if(error){
+    console.log(error);
+  }else{
+    done(null, data);
+  };
+});
 
-const createAndSavePerson = () => {
-  router.post('/insert',(req,res)=>{
-  Person.saveProduct(mariano,(err)=>{
-        if(err){ console.log(err);
-           res.redirect('/');
-        }else{
-          console.log( "exito" );
-        };
-    });
-  });
-  
+const createAndSavePerson = (done) => {
+  done(null, data);
 };
-  
-createAndSavePerson();
-
 // mongoose.set('transactionAsyncLocalStorage', true);
 //  await mongoose.connection.transaction(async() => {
 //  await modelSav.save();
@@ -54,7 +46,10 @@ createAndSavePerson();
     }
   })*/
  
-
+ module.exports.saveProduct = function(model,data){
+     model.save(data)
+  };
+  
 
 const createManyPeople = (arrayOfPeople, done) => {
   done(null /*, data*/);
