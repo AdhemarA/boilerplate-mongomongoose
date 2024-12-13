@@ -4,6 +4,7 @@ let router = express.Router();
 let mongoose = require('mongoose');
 
 let mongoDbURI = "mongodb+srv://aahborgesnogueira:dBJZnb3UNbMqcMho@cluster0.6qowl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+                  mongodb+srv://aahborgesnogueira:<db_password>@cluster0.6qowl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 mongoose.connect(mongoDbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.on('connected', () => console.log('connected'));
 
@@ -11,6 +12,7 @@ let Person;
 const personSchema = new mongoose.Schema({
   name: { type: String, required: true },
   age: Number, favoriteFoods: [String] });
+  
 Person = mongoose.model( "Person", personSchema);
 let mariano = new Person({ name: "Mariano", age: 36, favoriteFoods:[ "asado", "pizza"] });
 
