@@ -98,8 +98,7 @@ var removeById = function(personId, done) {
       }else{
       done(null, removedDoc);
       };
-    };
-  ); 
+});
 };
 
 const removeManyPeople = (done) => {
