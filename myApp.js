@@ -23,7 +23,8 @@ var createAndSavePerson = function(done) {
     }else{
       done(null, data);
     };
-});
+  });
+};  
 
 
 
@@ -58,7 +59,7 @@ const createAndSavePerson = (done) => {
   })*/
  
  module.exports.saveProduct = function(model,data){
-     model.save(data)
+     model.save(data);
   };
   
 
